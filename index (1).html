@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#040b13">
+<title>AirWave: подключение</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040b13;--in:#0a1724;--line:#16293b;--text:#eaf6ff;--mute:#7d96ad;--w1:#5fe3ff;--w2:#1f6bff;--ok:#46e3a8;--bad:#ff7a59;--amb:#ffc15e;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0)}
+body{margin:0;min-height:100dvh;background:radial-gradient(900px 520px at 85% -8%,#1f6bff26,transparent 65%),radial-gradient(700px 480px at -5% 30%,#5fe3ff14,transparent 65%),var(--bg);color:var(--text);font:15px/1.55 Onest,-apple-system,system-ui,Segoe UI,Roboto,sans-serif;overflow-x:hidden}
+.bg i{position:fixed;left:0;right:0;bottom:0;height:240px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200' preserveAspectRatio='none'%3E%3Cpath d='M0 90Q100 30 200 90T400 90T600 90T800 90V200H0Z' fill='%235fe3ff' fill-opacity='.07'/%3E%3C/svg%3E") repeat-x;background-size:800px 100%;animation:drift 26s linear infinite}
+.bg i+i{height:180px;opacity:.8;animation-duration:38s;animation-direction:reverse;background-size:1100px 100%}
+@keyframes drift{to{background-position-x:-1100px}}
+.wrap{position:relative;max-width:1040px;margin:0 auto;padding:max(16px,env(safe-area-inset-top)) 16px max(32px,env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px;font:700 19px Unbounded,Onest,sans-serif;letter-spacing:.01em}
+.logo{display:flex;gap:3px;align-items:center;height:28px}
+.logo i{width:4px;height:var(--h);border-radius:3px;background:linear-gradient(var(--w1),var(--w2));animation:eq 1.6s ease-in-out infinite;animation-delay:calc(var(--k)*-.28s)}
+@keyframes eq{50%{height:calc(var(--h)*.4)}}
+.ib{display:flex;gap:8px}
+.ib a,.ib button{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#ffffff08;border:1px solid var(--line);color:var(--text);cursor:pointer;transition:.25s;backdrop-filter:blur(8px)}
+.ib a:hover,.ib button:hover{border-color:var(--w1);color:var(--w1);transform:translateY(-2px)}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.cols{display:grid;grid-template-columns:minmax(300px,370px) 1fr;gap:18px;align-items:start}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.card{--mx:50%;--my:0;position:relative;background:linear-gradient(160deg,#0d1d2d,#09141f);border:1px solid var(--line);border-radius:26px;padding:24px;overflow:hidden}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--mx) var(--my),#5fe3ff22,transparent 70%);opacity:0;transition:opacity .7s;pointer-events:none}
+.card:hover:before,.card.tap:before{opacity:1;transition-duration:.25s}
+@media(max-width:480px){.card{padding:20px 16px;border-radius:22px}}
+.hero{position:sticky;top:16px;text-align:center}
+@media(max-width:860px){.hero{position:static}}
+.rise{opacity:0;transform:translateY(16px);animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*110ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+/* tank */
+.tank{position:relative;width:min(100%,250px);margin:0 auto 6px;aspect-ratio:1}
+.tank svg{width:100%;height:100%;display:block;overflow:visible}
+.shell{fill:none;stroke:var(--line);stroke-width:2}
+.glow{fill:none;stroke-width:3;stroke-dasharray:6 10;transform-origin:110px 110px;animation:spin 30s linear infinite;opacity:.8}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lvl{transform:translateY(240px);transition:transform 2.4s cubic-bezier(.2,.7,.2,1) .3s}
+.go .lvl{transform:translateY(var(--y))}
+.wv{animation:sway 6s linear infinite}.wv.b{animation-duration:9s;animation-direction:reverse}
+@keyframes sway{to{transform:translateX(-100px)}}
+.wl .s1{stop-color:#d9c2ff}.wl .s2{stop-color:#7a5cff}.wl .glow{stroke:#a68bff}
+.bad .s1{stop-color:#ffb08a}.bad .s2{stop-color:var(--bad)}
+.num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;text-shadow:0 2px 14px #000a}
+.num b{font:700 clamp(30px,9vw,40px)/1 Unbounded,Onest,sans-serif}.num span{font-size:13px;color:#cfe9f7;margin-top:6px}
+.tanks{display:grid;gap:12px;margin-bottom:6px}.tanks.two{grid-template-columns:1fr 1fr}.tw{min-width:0}.tank{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.two .num b{font-size:clamp(16px,5vw,22px)}.two .num span{font-size:11px;margin-top:4px}
+.cap{font-size:13px;line-height:1.35;margin-top:4px}.cap b{display:block;font-weight:600}.cap span{color:var(--mute);font-size:12px}
+.tilt{transform-origin:110px 110px;transform:rotate(var(--ta,0deg));transition:transform .35s ease-out}
+.tank.splash{animation:bob .8s cubic-bezier(.3,1.6,.5,1)}@keyframes bob{35%{transform:scale(1.08) rotate(2.5deg)}}
+.hint{margin:16px 0 0;font-size:12px;color:var(--mute);opacity:.85}
+.sonar{position:fixed;transform:translate(-50%,-50%);border-radius:50%;border:2px solid var(--w1);pointer-events:none;z-index:8;animation:son 1.5s ease-out forwards}
+@keyframes son{from{width:0;height:0;opacity:.9}to{width:1000px;height:1000px;opacity:0}}
+.tiles .tile:last-child:nth-child(odd){grid-column:1/-1}
+h1{font:600 20px/1.25 Unbounded,Onest,sans-serif;margin:14px 0 4px}
+.lead{margin:0 0 18px;color:var(--mute);font-size:14px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left}
+.tile{padding:12px 14px;border-radius:16px;background:#ffffff07;border:1px solid var(--line);min-width:0;transition:.25s}
+.tile:hover{border-color:#5fe3ff55;transform:translateY(-2px)}
+.tile small{display:block;color:var(--mute);font-size:12px}.tile b{display:block;font-weight:600;overflow-wrap:anywhere}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:7px;box-shadow:0 0 0 0 #46e3a899;animation:pulse 2s infinite}
+.bad .dot{background:var(--bad);animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 8px #46e3a800}}
+/* flow */
+.fh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+h2{margin:0;font:600 22px Unbounded,Onest,sans-serif}
+.pct{font-size:13px;color:var(--mute)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0 12px;margin:0 -4px}
+.chips button{flex:none;margin:0 0 0 4px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:#ffffff06;color:var(--mute);font:500 14px Onest,sans-serif;cursor:pointer;transition:.25s}
+.chips button:hover{color:var(--text)}
+.chips button[aria-pressed=true]{background:var(--text);color:#06121c;border-color:var(--text);font-weight:600}
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:4px;margin-bottom:6px;border-radius:16px;background:#00000040;border:1px solid var(--line)}
+.seg u{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:12px;background:linear-gradient(135deg,#5fe3ff26,#1f6bff30);border:1px solid #5fe3ff66;box-shadow:0 0 24px #5fe3ff2e;transition:transform .45s cubic-bezier(.3,1.3,.5,1)}
+.seg[data-i="1"] u{transform:translateX(100%)}
+.seg button{position:relative;padding:12px;border:0;background:none;color:var(--mute);font:600 14px Unbounded,Onest,sans-serif;cursor:pointer;transition:color .3s}
+.seg button[aria-pressed=true]{color:var(--w1)}
+.steps{position:relative;margin-top:14px;padding-left:0;animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.steps:before,.steps:after{content:"";position:absolute;left:21px;top:22px;width:2px;border-radius:2px;background:var(--line);bottom:60px}
+.steps:after{background:linear-gradient(var(--w1),var(--w2));bottom:auto;height:calc((100% - 82px)*var(--p,0));transition:height .8s cubic-bezier(.3,.9,.3,1);box-shadow:0 0 12px var(--w1)}
+.st{position:relative;display:flex;gap:16px;padding:0 0 18px;opacity:.55;transition:opacity .4s}
+.st.on,.st.done{opacity:1}
+.bd{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--in);border:2px solid var(--line);font:600 15px Unbounded,sans-serif;z-index:1;transition:.4s}
+.st.on .bd{border-color:var(--w1);color:var(--w1);box-shadow:0 0 0 6px #5fe3ff1a,0 0 22px #5fe3ff55;animation:beat 2.4s infinite}
+@keyframes beat{50%{box-shadow:0 0 0 10px #5fe3ff0d,0 0 28px #5fe3ff55}}
+.st.done .bd{background:var(--ok);border-color:var(--ok);color:#04251a}
+.sb{flex:1;min-width:0;padding:14px 16px;border-radius:18px;background:#ffffff06;border:1px solid var(--line);transition:.35s}
+.st.on .sb{border-color:#5fe3ff55;background:#5fe3ff0b}
+.sb h3{margin:0 0 4px;font:600 15px Unbounded,Onest,sans-serif}
+.sb p{margin:0 0 12px;color:var(--mute);font-size:14px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;margin:0 8px 8px 0;border-radius:13px;border:1px solid #5fe3ff55;background:#5fe3ff14;color:var(--w1);font:600 14px Onest,sans-serif;text-decoration:none;cursor:pointer;transition:.25s}
+.btn:hover{background:#5fe3ff26;transform:translateY(-2px)}.btn:active{transform:scale(.97)}
+.btn.pri{background:linear-gradient(135deg,var(--w1),var(--w2));border:0;color:#021019;box-shadow:0 8px 28px #1f6bff55}
+.btn.pri:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#fff7 50%,transparent 70%);transform:translateX(-120%);animation:shine 3.2s 1s infinite}
+@keyframes shine{40%,100%{transform:translateX(120%)}}
+.note{font-size:13px;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;padding:11px 18px;border-radius:14px;background:#0d1d2dee;border:1px solid var(--w1);transition:.35s;pointer-events:none;z-index:9;backdrop-filter:blur(10px)}
+.toast.on{transform:translate(-50%,0);opacity:1}
+.ver{text-align:center;color:#7d96ad88;font-size:11px;margin-top:20px}
+.err{text-align:center;padding:48px 22px;max-width:460px;margin:8vh auto}.err p{color:var(--mute)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--w1);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*,:before,:after{animation:none!important;transition:none!important}.rise{opacity:1;transform:none}.lvl{transform:translateY(var(--y))}}
+</style></head><body>
+<div class="bg" aria-hidden="true"><i></i><i></i></div>
+<div class="wrap">
+ <header class="rise" style="--i:0">
+  <div class="brand"><div class="logo" aria-hidden="true"><i style="--h:10px;--k:0"></i><i style="--h:20px;--k:1"></i><i style="--h:28px;--k:2"></i><i style="--h:18px;--k:3"></i><i style="--h:12px;--k:4"></i></div><span id="brand"></span></div>
+  <div class="ib"><button id="cpTop" title="Скопировать ссылку" aria-label="Скопировать ссылку"></button><a id="tg" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram"></a></div>
+ </header>
+ <main id="main" class="cols">
+  <aside class="card hero rise" style="--i:1" id="hero"></aside>
+  <section class="card rise" style="--i:2" id="flow">
+   <div class="fh"><h2>Подключение</h2><span class="pct" id="pct">0 из 3</span></div>
+   <div class="chips" id="chips" role="group" aria-label="Устройство"></div>
+   <div class="seg" id="seg" data-i="0"><u></u><button data-app="happ">Happ</button><button data-app="incy">INCY</button></div>
+   <div class="steps" id="steps"></div>
+  </section>
+ </main>
+<footer class="ver">AirWave · версия страницы 3 (2 октября)</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ===== НАСТРОЙКИ =====
+const BRAND = "AirWave";
+const TG_URL = "https://t.me/";            // ссылка на бота (если страницу отдаёт не бот)
+const ALLOWED_HOSTS = ["getsubkey.com"];   // домены ссылок-подписок
+const AUTO_OPEN = false;
+const SERVER = /*__SERVER__*/null;
+const AS = {happ:"https://apps.apple.com/us/app/happ-proxy-utility/id6504287215", incy:"https://apps.apple.com/ru/app/incy/id6756943388"};
+const PL = {happ:"https://play.google.com/store/apps/details?id=com.happproxy", incy:"https://play.google.com/store/apps/details?id=llc.itdev.incy"};
+const WIN = {happ:"https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe", incy:"https://github.com/INCY-DEV/incy-platforms/releases/latest/download/incy-windows-setup.exe"};
+const APPS = {
+  happ:{name:"Happ", scheme:"happ://add/", dl:{ios:AS.happ, android:PL.happ, macos:AS.happ, windows:WIN.happ, androidtv:PL.happ, appletv:AS.happ}},
+  incy:{name:"INCY", scheme:"incy://add/", dl:{ios:AS.incy, android:PL.incy, macos:AS.incy, windows:WIN.incy, androidtv:PL.incy, appletv:AS.incy}}
+};
+const PLATS = {ios:"iPhone / iPad", android:"Android", windows:"Windows", macos:"macOS", androidtv:"Android TV", appletv:"Apple TV"};
+// Режим без своего домена: #happ/<ссылка>?n=имя&e=<unix>&u=<байт использовано>&t=<лимит байт, 0 = безлимит>&s=active
+// =====================
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const I = {
+ dl:'<path d="M12 4v11M7.5 11L12 15.5 16.5 11M5 20h14"/>', plus:'<path d="M12 5v14M5 12h14"/>', link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+ tg:'<path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/>', ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>', ok:'<path d="M5 12.5l4.5 4.5L19 7.5"/>'
+};
+const svg = k => '<svg class="i" viewBox="0 0 24 24">' + I[k] + '</svg>';
+
+let app = "happ", sub = "", valid = false, plat = "windows", q = new URLSearchParams(), done = [0, 0, 0];
+if (SERVER) {
+  sub = SERVER.sub || ""; valid = !!sub;
+  for (const k of ["n", "e", "u", "t", "s", "d", "wu", "wt"]) if (SERVER[k] != null) q.set(k, SERVER[k]);
+} else try {
+  const [path, qs] = location.hash.slice(1).split("?");
+  const [a, enc] = path.split("/");
+  const u = new URL(decodeURIComponent(enc || ""));
+  q = new URLSearchParams(qs || "");
+  if (APPS[a] && u.protocol === "https:" && ALLOWED_HOSTS.includes(u.hostname)) { app = a; sub = u.href; valid = true; }
+} catch (e) {}
+
+const ua = navigator.userAgent;
+if (/iPhone|iPod|iPad/.test(ua) || (/Mac/.test(ua) && navigator.maxTouchPoints > 1)) plat = "ios";
+else if (/Android/.test(ua)) plat = "android";
+else if (/Mac/.test(ua)) plat = "macos";
+
+const brand = (SERVER && SERVER.brand) || BRAND;
+$("brand").textContent = brand; document.title = brand + ": подключение";
+$("cpTop").innerHTML = svg("link"); $("tg").innerHTML = svg("tg"); $("tg").href = (SERVER && SERVER.tg) || TG_URL;
+
+function toast(t){ const el = $("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 2000); }
+function copy(){ navigator.clipboard.writeText(sub).then(() => toast("Ссылка скопирована")).catch(() => toast("Не удалось скопировать")); }
+$("cpTop").onclick = copy;
+const gib = b => b >= 1073741824 ? (b / 1073741824).toFixed(b >= 107374182400 ? 0 : 2) + " ГБ" : b >= 1048576 ? Math.round(b / 1048576) + " МБ" : Math.round(b / 1024) + " КБ";
+const plural = (n, f) => f[n % 100 > 10 && n % 100 < 15 ? 2 : [2, 0, 1, 1, 1, 2][Math.min(n % 10, 5)]];
+function count(el, to, fmt){ const t0 = performance.now(); (function f(t){ const k = Math.min(1, (t - t0) / 1800), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(to * e); if (k < 1) requestAnimationFrame(f); })(t0); }
+function wave(amp){ let d = "M0 0"; for (let x = 0; x <= 600; x += 10) d += " L" + x + " " + (Math.sin(x / 100 * Math.PI * 2) * amp).toFixed(1); return d + " L600 260 L0 260Z"; }
+
+function fmtLeft(v){ return v >= 100 ? v.toFixed(0) + " ГБ" : v >= 1 ? v.toFixed(1) + " ГБ" : Math.round(v * 1024) + " МБ"; }
+function tank(i, used, total, cls, label){
+  const lvl = total ? Math.max(0, 1 - used / total) : 1, y = 22 + (1 - lvl) * 180;
+  return '<div class="tw"><div class="tank ' + cls + '"><svg viewBox="0 0 220 220"><defs><clipPath id="cp' + i + '"><circle cx="110" cy="110" r="92"/></clipPath>' +
+   '<linearGradient id="g' + i + '" x1="0" y1="0" x2="0" y2="1"><stop class="s1" offset="0" stop-color="#5fe3ff"/><stop class="s2" offset="1" stop-color="#1f6bff"/></linearGradient>' +
+   '<linearGradient id="rg' + i + '"><stop offset="0" stop-color="#5fe3ff"/><stop offset="1" stop-color="#1f6bff"/></linearGradient></defs>' +
+   '<circle class="shell" cx="110" cy="110" r="102"/><circle class="glow" stroke="url(#rg' + i + ')" cx="110" cy="110" r="106"/><circle cx="110" cy="110" r="92" fill="#06121d"/>' +
+   '<g clip-path="url(#cp' + i + ')"><g class="tilt"><g class="lvl" style="--y:' + y + 'px"><g class="wv b" style="opacity:.45"><path d="' + wave(7) + '" fill="url(#g' + i + ')" transform="translate(-40 -3)"/></g>' +
+   '<g class="wv"><path d="' + wave(5) + '" fill="url(#g' + i + ')"/></g></g></g></g></svg>' +
+   '<div class="num"><b id="big' + i + '">0</b><span>' + (total ? "осталось" : "без лимита") + '</span></div></div>' +
+   '<div class="cap"><b>' + label + '</b><span>' + (total ? gib(used) + " из " + gib(total) : "безлимит") + '</span></div></div>';
+}
+function drawHero(){
+  const hero = $("hero"), exp = +q.get("e") * 1000, used = +q.get("u") || 0, total = +q.get("t") || 0, has = exp > 0;
+  const wu = +q.get("wu") || 0, wt = +q.get("wt") || 0, dev = +q.get("d") || 0;
+  const paused = q.get("s") === "disabled", ok = !paused && (!has || exp > Date.now()), left = Math.ceil((exp - Date.now()) / 864e5);
+  const name = (q.get("n") || "").replace(/^tg-/, "ID ") || "—";
+  const date = has ? new Date(exp).toLocaleDateString("ru-RU", {day:"numeric", month:"long", year:"numeric"}) : "Без срока";
+  const title = paused ? "Подписка на паузе" : ok ? "Подписка активна" : "Срок подписки истёк";
+  const lead = !has ? "Без ограничения по сроку" : ok ? "Осталось " + left + " " + plural(left, ["день", "дня", "дней"]) : "Продлите её в боте, ссылка останется прежней";
+  const touch = matchMedia("(hover:none)").matches;
+  hero.className = "card hero rise" + (ok ? "" : " bad");
+  hero.innerHTML = '<div class="tanks' + (wt ? " two" : "") + '">' + tank(0, used, total, "", "Трафик") + (wt ? tank(1, wu, wt, "wl", "Белые списки") : "") + '</div>' +
+   '<h1>' + title + '</h1><p class="lead">' + lead + '</p><div class="tiles">' +
+   '<div class="tile"><small>Статус</small><b><i class="dot"></i>' + (ok ? "Активна" : paused ? "На паузе" : "Истекла") + '</b></div>' +
+   '<div class="tile"><small>Действует до</small><b>' + date + '</b></div>' +
+   (dev ? '<div class="tile"><small>Устройств</small><b>до ' + dev + '</b></div>' : "") +
+   '<div class="tile"><small>Пользователь</small><b>' + esc(name) + '</b></div></div>' +
+   '<p class="hint">' + (touch ? "Наклоняйте телефон: вода плещется. Тапните по шару." : "Двигайте мышью: вода наклоняется. Кликните по шару.") + '</p>';
+  requestAnimationFrame(() => setTimeout(() => document.querySelectorAll(".tank").forEach(t => t.classList.add("go")), 60));
+  [[0, used, total], [1, wu, wt]].forEach(([i, u, t]) => { const el = $("big" + i); if (!el) return; if (t) count(el, Math.max(0, t - u) / 1073741824, fmtLeft); else el.textContent = "∞"; });
+}
+
+function drawSteps(){
+  const cfg = APPS[app], link = cfg.dl[plat];
+  $("seg").dataset.i = app === "incy" ? 1 : 0;
+  document.querySelectorAll("#seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.app === app));
+  const s = $("steps");
+  s.innerHTML =
+   '<div class="st" data-n="0"><div class="bd">1</div><div class="sb"><h3>Установите ' + cfg.name + '</h3><p>Выберите свою платформу выше и нажмите кнопку. Если приложение уже стоит, пропустите шаг.</p>' +
+   (link ? '<a class="btn" data-act="dl" target="_blank" rel="noopener" href="' + esc(link) + '">' + svg("dl") + "Скачать для " + PLATS[plat] + '</a>' : '<span class="note">Найдите «' + cfg.name + '» в магазине приложений.</span>') + '<button class="btn" data-act="skip">Уже установлено</button></div></div>' +
+   '<div class="st" data-n="1"><div class="bd">2</div><div class="sb"><h3>Добавьте подписку</h3><p>Приложение откроется, и серверы добавятся сами. Не открылось? Скопируйте ссылку и вставьте её в приложение.</p>' +
+   '<a class="btn pri" data-act="add" href="' + esc(cfg.scheme + sub) + '">' + svg("plus") + 'Добавить в ' + cfg.name + '</a><button class="btn" data-act="cp">' + svg("link") + 'Скопировать ссылку</button></div></div>' +
+   '<div class="st" data-n="2"><div class="bd">3</div><div class="sb"><h3>Включите подключение</h3><p>В главном разделе нажмите большую кнопку в центре и выберите сервер из списка. При необходимости переключитесь на другой.</p>' +
+   '<button class="btn" data-act="fin">' + svg("ok") + 'Всё работает</button></div></div>';
+  mark(); s.style.animation = "none"; void s.offsetWidth; s.style.animation = "";
+}
+function mark(){
+  const n = done.filter(Boolean).length, act = done.indexOf(0);
+  $("steps").style.setProperty("--p", n / 3); $("pct").textContent = n + " из 3";
+  document.querySelectorAll(".st").forEach((el, i) => {
+    el.classList.toggle("done", !!done[i]); el.classList.toggle("on", i === act);
+    el.querySelector(".bd").innerHTML = done[i] ? svg("ok") : i + 1;
+  });
+}
+function drawChips(){
+  const c = $("chips"); c.innerHTML = "";
+  for (const k in PLATS) { const b = document.createElement("button"); b.textContent = PLATS[k]; b.setAttribute("aria-pressed", k === plat);
+    b.onclick = () => { plat = k; drawChips(); drawSteps(); }; c.appendChild(b); }
+  const on = c.querySelector("[aria-pressed=true]"); if (on) c.scrollLeft = on.offsetLeft - 20;
+}
+$("seg").onclick = e => { const b = e.target.closest("button"); if (b) { app = b.dataset.app; drawSteps(); } };
+$("steps").onclick = e => {
+  const t = e.target.closest("[data-act]"); if (!t) return;
+  const a = t.dataset.act;
+  if (a === "dl" || a === "skip") done[0] = 1;
+  else if (a === "add") { done[0] = 1; done[1] = 1; }
+  else if (a === "cp") { copy(); return; }
+  else if (a === "fin") { done = [1, 1, 1]; toast("Готово! Приятного пользования"); burst(e.clientX, e.clientY); splash(); }
+  mark();
+};
+function glow(e){ const c = e.target.closest && e.target.closest(".card"); if (c) { const r = c.getBoundingClientRect(); c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px"); } return c; }
+function setTilt(a){ document.documentElement.style.setProperty("--ta", Math.max(-16, Math.min(16, a)) + "deg"); }
+function burst(x, y){ for (let i = 0; i < 3; i++) { const d = document.createElement("div"); d.className = "sonar"; d.style.left = x + "px"; d.style.top = y + "px"; d.style.animationDelay = i * .25 + "s"; document.body.appendChild(d); setTimeout(() => d.remove(), 2300); } }
+function splash(){ document.querySelectorAll(".tank").forEach(t => { t.classList.remove("splash"); void t.offsetWidth; t.classList.add("splash"); }); }
+document.addEventListener("pointermove", e => { glow(e); if (e.pointerType === "mouse") setTilt(-(e.clientX / innerWidth - .5) * 30); });
+document.addEventListener("pointerdown", e => { const c = glow(e); if (c) { c.classList.add("tap"); clearTimeout(c._t); c._t = setTimeout(() => c.classList.remove("tap"), 700); } });
+addEventListener("deviceorientation", e => { if (e.gamma != null) setTilt(-e.gamma * .5); });
+$("hero").onclick = e => {
+  if (!e.target.closest(".tank")) return;
+  splash();
+  const D = window.DeviceOrientationEvent;
+  if (D && D.requestPermission && !D.asked) { D.asked = 1; D.requestPermission().catch(() => {}); }
+};
+
+if (!valid) {
+  $("main").outerHTML = '<section class="card err rise" style="--i:1"><h1>Ссылка не подошла</h1><p>Вернитесь в бота и нажмите кнопку подключения ещё раз.</p></section>';
+} else {
+  drawHero(); drawChips(); drawSteps();
+  if (AUTO_OPEN) setTimeout(() => { location.href = APPS[app].scheme + sub; }, 500);
+}
+</script></body></html>
